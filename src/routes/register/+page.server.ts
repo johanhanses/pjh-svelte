@@ -2,6 +2,7 @@ import { fail, redirect } from '@sveltejs/kit'
 import bcrypt from 'bcrypt'
 
 import { db } from '$lib/database'
+import type { Action } from './$types'
 
 // using an enum for user roles to avoid typos
 // if you're not using TypeScript use an object
@@ -18,7 +19,7 @@ export const load = async ({ locals }) => {
 }
 
 export const actions = {
-	register: async ({ request }) => {
+	register: (async ({ request }) => {
 		const data = await request.formData()
 		const username = data.get('username')
 		const password = data.get('password')
@@ -45,5 +46,5 @@ export const actions = {
 		})
 
 		throw redirect(303, '/login')
-	}
+	}) satisfies Action
 }

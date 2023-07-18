@@ -2,7 +2,7 @@ import { fail, redirect } from '@sveltejs/kit'
 import bcrypt from 'bcrypt'
 
 import { db } from '$lib/database'
-import type { PageServerLoad } from './$types'
+import type { Action, PageServerLoad } from './$types'
 
 export const load = (async ({ locals }) => {
 	// redirect user if logged in
@@ -12,7 +12,7 @@ export const load = (async ({ locals }) => {
 }) satisfies PageServerLoad
 
 export const actions = {
-	login: async ({ cookies, request }) => {
+	login: (async ({ cookies, request }) => {
 		const data = await request.formData()
 		const username = data.get('username')
 		const password = data.get('password')
@@ -55,5 +55,5 @@ export const actions = {
 
 		// redirect the user
 		throw redirect(302, '/')
-	}
+	}) satisfies Action
 }
