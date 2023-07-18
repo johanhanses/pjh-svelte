@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>SvelteKit Auth</title>
+	<title>Pjh</title>
 </svelte:head>
 
 <nav>
