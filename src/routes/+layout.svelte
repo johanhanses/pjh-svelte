@@ -8,7 +8,7 @@
 	<title>Pjh</title>
 </svelte:head>
 
-<nav>
+<nav class="bg-stone-800 text-white p-8 font-serif flex space-x-6">
 	{#if !$page.data.user}
 		<a href="/login">Login</a>
 		<a href="/register">Register</a>
@@ -23,6 +23,6 @@
 	{/if}
 </nav>
 
-<main>
+<main class="p-8">
 	<slot />
 </main>
